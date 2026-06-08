@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Feinmetallwerk - Über uns. Wer wir sind, wie wir arbeiten, und warum wir Ihr bester Partner für Metallarbeiten sind.">
+    <title>Über Uns – Feinmetallwerk</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <style>
+        /* ============================================
+           ABOUT PAGE – EXTRA STYLES
+        ============================================ */
+
+        /* Page Hero */
+        .about-hero {
+            min-height: 55vh;
+            background: linear-gradient(135deg, rgba(10,22,40,0.75), rgba(26,38,52,0.85)),
+                        url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1920') center/cover no-repeat;
+            display: flex;
+            align-items: flex-end;
+            padding: 120px 20px 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 70% 50%, rgba(252,233,157,0.08) 0%, transparent 55%);
+        }
+
+        .about-hero-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .about-hero-tag {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--bg-color);
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            padding: 6px 16px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .about-hero h1 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            line-height: 1.1;
+            color: var(--white);
+        }
+
+        .about-hero h1 span {
+            color: var(--gold);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            margin-top: 18px;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .breadcrumb a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .breadcrumb a:hover { opacity: 0.7; }
+        .breadcrumb i { font-size: 0.7rem; }
+
+        /* ── Story Section ── */
+        .story-section {
+            padding: 100px 0;
+            background: var(--bg-color);
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .story-visual {
+            position: relative;
+        }
+
+        .story-img-main {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 4px;
+            display: block;
+        }
+
+        .story-img-accent {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border: 5px solid var(--bg-color);
+            border-radius: 4px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .story-badge {
+            position: absolute;
+            top: 25px;
+            left: -20px;
+            background: var(--gold);
+            color: var(--bg-color);
+            padding: 18px 22px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .story-badge .badge-num {
+            display: block;
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .story-badge .badge-label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        .story-text .sub-heading {
+            margin-bottom: 10px;
+        }
+
+        .story-text h2 {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .story-text p {
+            color: var(--text-gray);
+            line-height: 1.85;
+            margin-bottom: 20px;
+            font-size: 0.97rem;
+        }
+
+        .feature-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .feature-tag {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--border-color);
+            padding: 9px 16px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border-radius: 4px;
+            transition: all 0.25s;
+        }
+
+        .feature-tag:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .feature-tag i {
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
+
+        /* ── Stats Bar ── */
+        .stats-bar {
+            background: var(--gold);
+            padding: 50px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: 0;
+            height: 60%;
+            width: 1px;
+            background: rgba(10,22,40,0.2);
+        }
+
+        .stat-num {
+            display: block;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--bg-color);
+            line-height: 1;
+        }
+
+        .stat-label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(10,22,40,0.65);
+            margin-top: 8px;
+        }
+
+        /* ── Team / Person Section ── */
+        .person-section {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+        }
+
+        .person-grid {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .person-card {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .person-card-top {
+            background: linear-gradient(135deg, var(--bg-color), var(--bg-secondary));
+            padding: 40px 30px 30px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .person-avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 4px solid var(--gold);
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(252,233,157,0.25);
+        }
+
+        .person-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        .person-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .person-role {
+            color: var(--gold);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .person-card-links {
+            display: flex;
+            gap: 0;
+        }
+
+        .person-card-links a {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-right: 1px solid var(--border-color);
+            transition: all 0.25s;
+        }
+
+        .person-card-links a:last-child { border-right: none; }
+
+        .person-card-links a:hover {
+            color: var(--gold);
+            background: rgba(252,233,157,0.07);
+        }
+
+        .person-info {
+            padding-top: 10px;
+        }
+
+        .person-info .sub-heading { margin-bottom: 10px; }
+
+        .person-info h2 {
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.3;
+            margin-bottom: 25px;
+        }
+
+        .person-info p {
+            color: var(--text-gray);
+            line-height: 1.85;
+            margin-bottom: 20px;
+            font-size: 0.97rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .skill-bar-item {}
+
+        .skill-bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .skill-bar-label span:last-child { color: var(--gold); }
+
+        .skill-bar-track {
+            height: 4px;
+            background: var(--border-color);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+            border-radius: 2px;
+            width: 0;
+            transition: width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* ── Process Section ── */
+        .process-section {
+            padding: 100px 0;
+            background: var(--bg-color);
+        }
+
+        .process-steps {
+            position: relative;
+            margin-top: 70px;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 35px;
+            left: 35px;
+            width: 2px;
+            height: calc(100% - 70px);
+            background: linear-gradient(to bottom, var(--gold), transparent);
+        }
+
+        .process-step {
+            display: grid;
+            grid-template-columns: 70px 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .process-step:last-child { margin-bottom: 0; }
+
+        .step-dot {
+            width: 70px;
+            height: 70px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--gold);
+            flex-shrink: 0;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-step:hover .step-dot {
+            background: var(--gold);
+            color: var(--bg-color);
+            border-color: var(--gold);
+            transform: scale(1.1);
+        }
+
+        .step-content {
+            padding-top: 12px;
+        }
+
+        .step-content h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .step-content p {
+            color: var(--text-gray);
+            font-size: 0.93rem;
+            line-height: 1.7;
+        }
+
+        .step-num {
+            position: absolute;
+            top: -8px;
+            right: -5px;
+            background: var(--gold);
+            color: var(--bg-color);
+            font-size: 0.65rem;
+            font-weight: 800;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ── CTA Section ── */
+        .about-cta {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(252,233,157,0.06) 0%, transparent 65%);
+        }
+
+        .about-cta-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-cta h2 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .about-cta p {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            margin-bottom: 40px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 992px) {
+            .story-grid,
+            .person-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .story-visual { order: -1; }
+
+            .story-img-main { height: 320px; }
+            .story-img-accent { display: none; }
+            .story-badge { left: 15px; }
+
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat-item:nth-child(2)::after { display: none; }
+
+            .skills-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .about-hero { min-height: 45vh; padding: 110px 20px 50px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+
+            .process-steps::before { left: 28px; }
+            .process-step { grid-template-columns: 56px 1fr; gap: 20px; }
+            .step-dot { width: 56px; height: 56px; font-size: 1.1rem; }
+        }
+
+        /* ── Scroll-reveal ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="sticky-header">
+        <div class="container nav-box">
+            <a href="index.html" class="logo">
+                <img src="img/logo.png" alt="Feinmetallwerk Logo" width="35" height="35">
+                <span>FEIN<span id="spanMetal">METALL</span>WERK</span>
+            </a>
+
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="de">DE</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="tr">TR</button>
+            </div>
+
+            <button class="mobile-menu-toggle" aria-label="Menu öffnen">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link" data-translate="nav_home">STARTSEITE</a></li>
+                    <li><a href="uberuns.html" class="nav-link active" data-translate="nav_about">ÜBER UNS</a></li>
+                    <li><a href="index.html#leistungen" class="nav-link" data-translate="nav_services">LEISTUNGEN</a></li>
+                    <li><a href="index.html#projekte" class="nav-link" data-translate="nav_projects">PROJEKTE</a></li>
+                    <li><a href="index.html#kontakt" class="nav-link" data-translate="nav_contact">KONTAKT</a></li>
+                    <li class="nav-lang-mobile">
+                        <button class="lang-btn active" data-lang="de">DE</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="tr">TR</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="about-hero">
+        <div class="about-hero-inner container">
+            <span class="about-hero-tag" data-translate="about_subtitle">WER WIR SIND</span>
+            <h1 data-translate="about_hero_title">ÜBER <span>UNS</span></h1>
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">FEINMETALLWERK</a>
+                <i class="fas fa-chevron-right"></i>
+                <span data-translate="nav_about">ÜBER UNS</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- ===================== STORY ===================== -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-visual reveal">
+                    <div class="story-badge">
+                        <span class="badge-num">15+</span>
+                        <span class="badge-label" data-translate="stat1_label">Jahre Erfahrung</span>
+                    </div>
+                    <img
+                        class="story-img-main"
+                        src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800"
+                        alt="Metallarbeiten Workshop"
+                        loading="lazy"
+                    >
+                    <img
+                        class="story-img-accent"
+                        src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=400"
+                        alt="Schweißarbeiten Detail"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="story-text reveal">
+                    <h3 class="sub-heading" data-translate="about_subtitle">WER WIR SIND</h3>
+                    <h2 data-translate="about_title">TRADITION TRIFFT MODERNE TECHNIK</h2>
+                    <p data-translate="about_p1">Bei FEINMETALLWERK verbinden wir jahrelange Handwerkstradition mit modernsten Fertigungsmethoden. Gegründet mit der Vision, höchste Qualität im Metallbau zu liefern, haben wir uns zu einem verlässlichen Partner entwickelt.</p>
+                    <p data-translate="about_p2">Ob individuelle Sonderanfertigungen, komplexe Stahlkonstruktionen oder filigrane Edelstahlarbeiten – unser erfahrenes Team setzt Ihre Ideen mit Präzision und Leidenschaft um.</p>
+
+                    <div class="feature-tags">
+                        <span class="feature-tag"><i class="fas fa-fire"></i> <span data-translate="feat1">WIG & MAG Schweißen</span></span>
+                        <span class="feature-tag"><i class="fas fa-drafting-compass"></i> <span data-translate="feat2">Individuelle Fertigung</span></span>
+                        <span class="feature-tag"><i class="fas fa-gem"></i> <span data-translate="feat3">Edelstahlarbeiten</span></span>
+                        <span class="feature-tag"><i class="fas fa-tools"></i> <span data-translate="feat4">Vor-Ort-Montage</span></span>
+                        <span class="feature-tag"><i class="fas fa-border-all"></i> <span data-translate="feat5">Tore & Zäune</span></span>
+                        <span class="feature-tag"><i class="fas fa-clock"></i> <span data-translate="feat6">Termingerecht</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== STATS ===================== -->
+    <div class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-num">15+</span>
+                    <span class="stat-label" data-translate="stat1_label">Jahre Erfahrung</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num" data-count="200">200+</span>
+                    <span class="stat-label" data-translate="stat2_label">Projekte</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num" data-count="150">150+</span>
+                    <span class="stat-label" data-translate="stat3_label">Zufriedene Kunden</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">5.0</span>
+                    <span class="stat-label" data-translate="stat4_label">Bewertung</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== PERSON ===================== -->
+    <section class="person-section">
+        <div class="container">
+            <div class="person-grid">
+                <div class="person-card reveal">
+                    <div class="person-card-top">
+                        <div class="person-avatar">
+                            <img src="img/jalal_photo.png" alt="Jalal Aliyev">
+                        </div>
+                        <div class="person-name" data-translate="contact_name">JALAL ALIYEV</div>
+                        <div class="person-role" data-translate="contact_role">GESCHÄFTSFÜHRER</div>
+                    </div>
+                    <div class="person-card-links">
+                        <a href="tel:+491627921222" title="Anrufen"><i class="fas fa-phone"></i></a>
+                        <a href="index.html#kontakt" title="E-Mail"><i class="fas fa-envelope"></i></a>
+                        <a href="https://wa.me/491627921222" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.linkedin.com/in/jalal-aliyev-473595323" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/handwerk_haus_garten/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="person-info reveal">
+                    <h3 class="sub-heading">GESCHÄFTSFÜHRER</h3>
+                    <h2>JALAL ALIYEV</h2>
+                    <p data-translate="benefit1_desc">Vom Schweißen über Montage bis zu allen praktischen Details des Metallhandwerks – persönlich erlernt und gelebt. Über 15 Jahre Berufserfahrung, direkt vor Ort beim Kunden.</p>
+                    <p data-translate="benefit4_desc">Ich stehe persönlich hinter jedem Projekt – mit Verantwortung, Austausch und echtem Engagement. Kein Subunternehmer, kein Mittelsmann – nur direktes Handwerk.</p>
+
+                    <div class="skills-grid">
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-label">
+                                <span>WIG / TIG Schweißen</span><span>98%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="98"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-label">
+                                <span>MAG Schweißen</span><span>95%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-label">
+                                <span>Edelstahlarbeiten</span><span>92%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="92"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-label">
+                                <span>Konstruktion & Planung</span><span>90%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-label">
+                                <span>Schiffbau</span><span>88%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-label">
+                                <span>Montage vor Ort</span><span>97%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="97"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== PROCESS ===================== -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title reveal" data-translate="process_title">WIE WIR ARBEITEN</h2>
+            <p class="section-subtitle reveal" data-translate="process_subtitle">Von der ersten Idee bis zur fertigen Montage – unser bewährter Prozess</p>
+
+            <div class="process-steps">
+                <div class="process-step reveal">
+                    <div class="step-dot">
+                        <i class="fas fa-phone-alt"></i>
+                        <span class="step-num">1</span>
+                    </div>
+                    <div class="step-content">
+                        <h3 data-translate="step1_title">KONTAKT & BERATUNG</h3>
+                        <p data-translate="step1_desc">Sie nehmen Kontakt auf. Wir hören zu und beraten Sie kostenlos.</p>
+                    </div>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-dot">
+                        <i class="fas fa-drafting-compass"></i>
+                        <span class="step-num">2</span>
+                    </div>
+                    <div class="step-content">
+                        <h3 data-translate="step2_title">PLANUNG & ANGEBOT</h3>
+                        <p data-translate="step2_desc">Detaillierte Planung und transparentes Angebot ohne versteckte Kosten.</p>
+                    </div>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-dot">
+                        <i class="fas fa-fire"></i>
+                        <span class="step-num">3</span>
+                    </div>
+                    <div class="step-content">
+                        <h3 data-translate="step3_title">FERTIGUNG</h3>
+                        <p data-translate="step3_desc">Präzise Fertigung in unserer modernen Werkstatt – qualitätsgeprüft.</p>
+                    </div>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-dot">
+                        <i class="fas fa-tools"></i>
+                        <span class="step-num">4</span>
+                    </div>
+                    <div class="step-content">
+                        <h3 data-translate="step4_title">MONTAGE VOR ORT</h3>
+                        <p data-translate="step4_desc">Fachgerechte Montage termingerecht bei Ihnen – sauber und professionell.</p>
+                    </div>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-dot">
+                        <i class="fas fa-star"></i>
+                        <span class="step-num">5</span>
+                    </div>
+                    <div class="step-content">
+                        <h3 data-translate="step5_title">ABNAHME & GARANTIE</h3>
+                        <p data-translate="step5_desc">Gemeinsame Abnahme und volle Garantie. Ihre Zufriedenheit ist unser Maßstab.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CTA ===================== -->
+    <section class="about-cta">
+        <div class="container about-cta-inner reveal">
+            <h2 data-translate="cta_title">BEREIT FÜR IHR PROJEKT?</h2>
+            <p data-translate="cta_desc">Kontaktieren Sie uns jetzt für eine kostenlose Beratung</p>
+            <a href="index.html#kontakt" class="cta-button" data-translate="cta_btn">JETZT ANFRAGEN</a>
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="img/logo.png" alt="Feinmetallwerk Logo" width="30" height="30">
+                    <span>FEIN<span class="gold-text">METALL</span>WERK</span>
+                </div>
+                <p class="footer-copyright" data-translate="footer_copyright">© 2026 FEINMETALLWERK. Alle Rechte vorbehalten.</p>
+            </div>
+            <div class="footer-right">
+                <div class="socials">
+                    <a href="tel:+491627921222" title="Anrufen" aria-label="Telefon"><i class="fas fa-phone"></i></a>
+                    <a href="index.html#kontakt" ...></a>
+                    <a href="https://www.instagram.com/handwerk_haus_garten/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/491627921222" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/jalal-aliyev-473595323" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <button class="back-to-top" id="backToTop" aria-label="Nach oben">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        // ── Language Switcher ──
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                changeLanguage(this.dataset.lang);
+            });
+        });
+
+        // ── Mobile Menu ──
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        const nav = document.querySelector('.main-nav');
+        if (toggle) {
+            toggle.addEventListener('click', function () {
+                this.classList.toggle('active');
+                nav.classList.toggle('active');
+                document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+            });
+            document.querySelectorAll('.nav-link').forEach(l => {
+                l.addEventListener('click', () => {
+                    toggle.classList.remove('active');
+                    nav.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // ── Sticky Header ──
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.pageYOffset > 100);
+            document.getElementById('backToTop').classList.toggle('visible', window.pageYOffset > 400);
+        });
+
+        // ── Back to Top ──
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ── Scroll Reveal ──
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // ── Skill Bars ──
+        const barObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+                        bar.style.width = bar.dataset.width + '%';
+                    });
+                    barObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const skillSection = document.querySelector('.skills-grid');
+        if (skillSection) barObserver.observe(skillSection);
+
+    });
+    </script>
+</body>
+</html>
